@@ -11,7 +11,7 @@ def sum_of_elements(numbers, exclude_negative=False):
     return sum_numbers
 
 numbers = input("Enter numbers separated by spaces: ").split()
-input_exclude_negative = input("Do you want to exclude negative numbers (yes/no): ").strip().lower()
+input_exclude_negative = input("Do you want to exclude negative numbers(yes/no): ").strip().lower()
 exclude_negative = input_exclude_negative == "yes"
 
 result = sum_of_elements(numbers, exclude_negative)
