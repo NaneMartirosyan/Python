@@ -15,19 +15,18 @@ def process_and_write_back(file_name="random_numbers.txt"):
         lines = f.readlines()  
 
     filtered_lines = [
-        " ".join(str(num) for num in map(int, line.split()) if num > 40)
+        " ".join(map(str, filter(lambda num: num > 40, map(int, line.split()))))
         for line in lines
     ]
     
     with open(file_name, "w") as f:
-        f.write("\n".join(filtered_lines) + "\n")  
+        f.write("\n".join(filtered_lines) + "\n") 
     print(f"Filtered data written back to '{file_name}'.")
 
 def read_file_generator(file_name="random_numbers.txt"):
     with open(file_name, "r") as f:
         for line in f:
             yield [int(num) for num in line.split()]  
-
 @measure_time
 def process_with_generator(file_name="random_numbers.txt"):
     generator = read_file_generator(file_name)
@@ -36,4 +35,3 @@ def process_with_generator(file_name="random_numbers.txt"):
 
 process_and_write_back()  
 process_with_generator()  
-
